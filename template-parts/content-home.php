@@ -20,28 +20,31 @@
                 "slidesToShow": 1
                 }}
             ]'>
-                <div class="slide-item bg-1 animation-style-01">
+                <!-- removed class:bg-1 -->
+                <div class="slide-item slide-bg animation-style-01" style="background-image:url(<?php echo the_field('slide_1_image') ?>)">
                     <div class="slider-progress"></div>
                     <div class="container">
                         <div class="slide-content">
-                            <span>Exclusive Offer -20% Off This Week</span>
-                            <h2>Accessories <br> Explore Trending</h2>
-                            <p class="short-desc">Aliquam error eos cumque aut repellat quasi accusantium inventore necessitatibus. Vel quisquam distinctio in inventore dolorum.</p>
+                            <span><?php echo the_field('slide_1_top_text'); ?></span>
+                            <h2><?php echo the_field('slide_1_title') ?></h2>
+                            <p class="short-desc"><?php echo the_field('slide_1_description') ?></p>
                             <div class="slide-btn">
-                                <a class="kenne-btn" href="#">shop now</a>
+                                <a class="kenne-btn" href="/shop">shop now</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="slide-item bg-2 animation-style-01">
+
+                <!-- removed class:bg-2 -->
+                <div class="slide-item slide-bg animation-style-01" style="background-image:url(<?php echo the_field('slide_2_image') ?>)">
                     <div class="slider-progress"></div>
                     <div class="container">
                         <div class="slide-content">
-                            <span>Exclusive Offer -10% Off This Week</span>
-                            <h2>Stylist <br> Female Clothes</h2>
-                            <p class="short-desc-2">Made from Soft, Durable, US-grown Supima cotton.</p>
+                            <span><?php echo the_field('slide_2_top_text'); ?></span>
+                            <h2><?php echo the_field('slide_2_title') ?></h2>
+                            <p class="short-desc"><?php echo the_field('slide_2_description') ?></p>
                             <div class="slide-btn">
-                                <a class="kenne-btn" href="#">shop now</a>
+                                <a class="kenne-btn" href="/shop">shop now</a>
                             </div>
                         </div>
                     </div>
@@ -59,6 +62,7 @@
             <div class="container">
                 <div class="service-nav">
                     <div class="row">
+
                         <div class="col-lg-4 col-md-4">
                             <div class="service-item">
                                 <div class="content">
@@ -67,6 +71,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-4 col-md-4">
                             <div class="service-item">
                                 <div class="content">
@@ -75,6 +80,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-4 col-md-4">
                             <div class="service-item">
                                 <div class="content">
@@ -83,6 +89,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -95,16 +102,15 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="banner-item img-hover_effect">
-                            <div class="banner-img"></div>
+                            <!-- removed class:banner-img -->
+                            <div class="ad-banner-image banner-img" style="background-image: url(<?php echo the_field('ad_banner_image') ?>);"></div>
                             <div class="banner-content">
-                                <span>In-Store & Online</span>
+                                <span><?php echo the_field('ad_banner_top_text'); ?></span>
                                 <h3>
-                                    Men's Slippers
-                                    <br>
-                                Shoes & More!
+                                    <?php echo the_field('ad_banner_title'); ?>
                                 </h3>
                                 <div class="kenne-btn-ps_center">
-                                    <a class="kenne-btn transparent-btn black-color square-btn" href="#">Discover Now</a>
+                                    <a class="kenne-btn transparent-btn black-color square-btn" href="<?php echo the_field('ad_url'); ?>">Discover Now</a>
                                 </div>
                             </div>
                         </div>
@@ -117,6 +123,21 @@
 
 
         <!-- Begin Kenne's Content Wrapper Area -->
+        <?php
+        $query = new WC_Product_Query(array(
+            'limit' => 3,
+            'page' => 1,
+            'status' => 'publish',
+            'paginate' => false,
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'return' => 'data'
+        ));
+        $products = $query->get_products();
+
+
+        if (count($products) > 0) :
+        ?>
         <div class="kenne-content_wrapper">
             <div class="container">
                 <div class="row">
@@ -124,72 +145,118 @@
 
                         <div class="shop-product-wrap grid gridview-3 row">
 
-                                <div class="col-lg-4 col-md-4 col-sm-6">
-                                    <div class="product-item">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <a href="#">
-                                                    <img class="primary-img" src="<?php echo get_template_directory_uri();?>/html-v2/assets/images/product/8-1.jpg" alt="">
-                                                    <img class="secondary-img" src="<?php echo get_template_directory_uri();?>/html-v2/assets/images/product/8-1.jpg" alt="">
-                                                </a>
-                                                <span class="sticker">-15%</span>
+
+
+                            <?php foreach ($products as $index => $product) : ?>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+
+                                <div class="product-item">
+                                    <div class="single-product">
+                                        <div class="product-img">
+                                            <a href="<?php echo get_permalink($product->id); ?>">
+                                                <?php
+                                                        $product_image = $product->image_id ? wp_get_attachment_image_url($product->image_id) : "";
+                                                        // echo $product_image;
+                                                        $product_gallery = array();
+                                                        if (count($product->gallery_image_ids) > 0) :
+                                                            foreach ($product->gallery_image_ids as $id) :
+                                                                array_push($product_gallery, wp_get_attachment_image_url($id));
+                                                            endforeach;
+                                                        endif;
+                                                        ?>
+
+                                                <?php if (count($product_gallery) <= 0) : ?>
+                                                <img class="primary-img" src="<?php echo $product_image ? $product_image : get_template_directory_uri() . '/html-v2/assets/img/woocommerce-placeholder.png'; ?>" alt="" />
+                                                <?php else : ?>
+
+                                                <?php foreach ($product_gallery as $index => $image) : ?>
+
+                                                <img class="<?php echo $index === 0 ? 'primary-img' : 'secondary-img'; ?>" src="<?php echo count($product_gallery) > 0 ? $image : $product_image; ?>" alt="" />
+
+                                                <?php endforeach;
+                                                        endif; ?>
+                                            </a>
+                                            <?php if ($product->sale_price) : ?>
+                                            <span class="sticker">
+                                                -<?php echo round(100 - (floatval($product->sale_price) / floatval($product->regular_price) * 100)); ?>%
+                                            </span>
+                                            <?php endif; ?>
+                                        </div>
+
+                                        <div class="product-content">
+                                            <div class="product-desc_info">
+
+                                                <h3 class="product-name">
+                                                    <a href="<?php echo get_permalink($product->id); ?>"><?php echo $product->name; ?></a>
+                                                </h3>
+
+                                                <div class="price-box">
+                                                    <?php if ($product->regular_price) : ?>
+                                                    <span class="new-price">₵<?php echo number_format($product->sale_price ? $product->sale_price : $product->price, 2); ?></span>
+                                                    <?php endif; ?>
+
+                                                    <?php if ($product->regular_price) : ?>
+                                                    <span class="old-price">₵<?php echo number_format($product->regular_price, 2); ?></span>
+                                                    <?php endif; ?>
+                                                </div>
+
                                             </div>
-                                            <div class="product-content">
-                                                <div class="product-desc_info">
-                                                    <h3 class="product-name"><a href="#">AMI Slippon</a></h3>
-                                                    <div class="price-box">
-                                                        <span class="new-price">$46.91</span>
-                                                        <span class="old-price">$50.99</span>
-                                                    </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <?php endforeach;
+                                // echo '<pre>';
+                                // var_dump($products);
+                                // echo '</pre>';
+
+                                ?>
+                            <!-- <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="product-item">
+                                    <div class="single-product">
+                                        <div class="product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<?php echo get_template_directory_uri(); ?>/html-v2/assets/images/product/8-2.jpg" alt="">
+                                                <img class="secondary-img" src="<?php echo get_template_directory_uri(); ?>/html-v2/assets/images/product/8-2.jpg" alt="">
+                                            </a>
+                                            <span class="sticker">-15%</span>
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="product-desc_info">
+                                                <h3 class="product-name"><a href="#">AMI Clippers Max II</a></h3>
+                                                <div class="price-box">
+                                                    <span class="new-price">$456.91</span>
+                                                    <span class="old-price">$70.99</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-6">
-                                    <div class="product-item">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <a href="#">
-                                                    <img class="primary-img" src="<?php echo get_template_directory_uri();?>/html-v2/assets/images/product/8-2.jpg" alt="">
-                                                    <img class="secondary-img" src="<?php echo get_template_directory_uri();?>/html-v2/assets/images/product/8-2.jpg" alt="">
-                                                </a>
-                                                <span class="sticker">-15%</span>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="product-desc_info">
-                                                    <h3 class="product-name"><a href="#">AMI Clippers Max II</a></h3>
-                                                    <div class="price-box">
-                                                        <span class="new-price">$456.91</span>
-                                                        <span class="old-price">$70.99</span>
-                                                    </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="product-item">
+                                    <div class="single-product">
+                                        <div class="product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<?php echo get_template_directory_uri(); ?>/html-v2/assets/images/product/8-1.jpg" alt="">
+                                                <img class="secondary-img" src="<?php echo get_template_directory_uri(); ?>/html-v2/assets/images/product/8-1.jpg" alt="">
+                                            </a>
+                                            <span class="sticker">-15%</span>
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="product-desc_info">
+                                                <h3 class="product-name"><a href="#">AMI Short Airbrand 5</a></h3>
+                                                <div class="price-box">
+                                                    <span class="new-price">$116.91</span>
+                                                    <span class="old-price">$500.99</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-6">
-                                    <div class="product-item">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <a href="#">
-                                                    <img class="primary-img" src="<?php echo get_template_directory_uri();?>/html-v2/assets/images/product/8-1.jpg" alt="">
-                                                    <img class="secondary-img" src="<?php echo get_template_directory_uri();?>/html-v2/assets/images/product/8-1.jpg" alt="">
-                                                </a>
-                                                <span class="sticker">-15%</span>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="product-desc_info">
-                                                    <h3 class="product-name"><a href="#">AMI Short Airbrand 5</a></h3>
-                                                    <div class="price-box">
-                                                        <span class="new-price">$116.91</span>
-                                                        <span class="old-price">$500.99</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            </div> -->
 
                         </div>
 
@@ -197,4 +264,5 @@
                 </div>
             </div>
         </div>
+        <?php endif; ?>
         <!-- Kenne's Content Wrapper Area End Here -->
