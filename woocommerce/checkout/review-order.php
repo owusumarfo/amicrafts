@@ -18,7 +18,6 @@
 
 defined('ABSPATH') || exit;
 ?>
-<h1>aaa</h1>
 <table class="shop_table woocommerce-checkout-review-order-table">
     <thead>
         <tr>
