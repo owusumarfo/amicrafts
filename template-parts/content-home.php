@@ -33,7 +33,7 @@
                 ?>
 
                 <!-- removed class:bg-1 -->
-                <div class="slide-item slide-bg animation-style-01" style="background-image:url(<?php echo wp_get_attachment_image_url(get_post_meta($post->ID, 'slider_image', true)); ?>)">
+                <div class="slide-item slide-bg animation-style-01" style="background-image:url(<?php echo wp_get_attachment_image_url(get_post_meta($post->ID, 'slider_image', true), 'full'); ?>)">
                     <div class="slider-progress"></div>
                 </div>
                 <?php endwhile;
