@@ -107,8 +107,8 @@ function amicrafts_setup()
 
 	// Add theme support woocommerce
 	add_theme_support('woocommerce', array(
-		'thumbnail_image_width' => 300,
-		'single_image_width'    => 600,
+		// 'thumbnail_image_width' => 300,
+		// 'single_image_width'    => 600,
 
 		'product_grid'          => array(
 			'default_rows'    => 3,
