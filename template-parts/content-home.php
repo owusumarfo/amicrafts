@@ -212,7 +212,6 @@
 
                             <?php foreach ($products as $index => $product) : ?>
                             <div class="col-lg-4 col-md-4 col-sm-6">
-
                                 <div class="product-item">
                                     <div class="single-product">
                                         <div class="product-img">
@@ -254,7 +253,7 @@
                                                 </h3>
 
                                                 <div class="price-box">
-                                                    <?php if ($product->regular_price) : ?>
+                                                    <?php if ($product->sale_price || $product->price) : ?>
                                                     <span class="new-price">₵<?php echo number_format($product->sale_price ? $product->sale_price : $product->price, 2); ?></span>
                                                     <?php endif; ?>
 
