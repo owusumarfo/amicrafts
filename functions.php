@@ -133,7 +133,7 @@ function amicrafts_setup()
 	add_theme_support('post-thumbnails');
 	add_theme_support('widgets');
 	add_theme_support('custom-units');
-	// add_theme_support('widgets-block-editor');
+	add_theme_support('widgets-block-editor');
 }
 add_action('after_setup_theme', 'amicrafts_setup');
 
@@ -405,4 +405,4 @@ function add_menu_link_class($atts, $item, $args)
 add_filter('nav_menu_link_attributes', 'add_menu_link_class', 1, 3);
 
 // 
-add_filter('big_image_size_threshold', '__return_false');
+// add_filter('big_image_size_threshold', '__return_false');

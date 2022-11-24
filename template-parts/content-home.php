@@ -85,7 +85,7 @@
                 <div class="service-nav">
                     <div class="row">
 
-                        <!-- <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-4 col-md-4">
                             <div class="service-item">
                                 <div class="content">
                                     <img class="mb-4" src="<?php echo the_field('service_1_image') ?>" alt="">
@@ -93,9 +93,29 @@
                                     <p><?php echo the_field('service_1_description') ?></p>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
 
                         <div class="col-lg-4 col-md-4">
+                            <div class="service-item">
+                                <div class="content">
+                                    <img class="mb-4" src="<?php echo the_field('service_2_image') ?>" alt="">
+                                    <h4><?php echo the_field('service_2_title') ?></h4>
+                                    <p><?php echo the_field('service_2_description') ?></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+                            <div class="service-item">
+                                <div class="content">
+                                    <img class="mb-4" src="<?php echo the_field('service_3_image') ?>" alt="">
+                                    <h4><?php echo the_field('service_3_title') ?></h4>
+                                    <p><?php echo the_field('service_3_description') ?></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-lg-4 col-md-4">
                             <div class="service-item">
                                 <div class="content">
                                     <img class="mb-4" src="<?php echo get_template_directory_uri() ?>/html-v2/assets/img/money-back.png" alt="">
@@ -103,9 +123,9 @@
                                     <p>Free shipping on all orders</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
-                        <div class="col-lg-4 col-md-4">
+                        <!-- <div class="col-lg-4 col-md-4">
                             <div class="service-item">
                                 <div class="content">
                                     <img class="mb-4" src="<?php echo get_template_directory_uri() ?>/html-v2/assets/img/money-back.png" alt="">
@@ -113,9 +133,9 @@
                                     <p>30 days for free return</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
-                        <div class="col-lg-4 col-md-4">
+                        <!-- <div class="col-lg-4 col-md-4">
                             <div class="service-item">
                                 <div class="content">
                                     <img class="mb-4" src="<?php echo get_template_directory_uri() ?>/html-v2/assets/img/online-support.png" alt="">
@@ -123,7 +143,7 @@
                                     <p>Support 24 hours a day</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>
