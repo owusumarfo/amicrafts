@@ -1,5 +1,5 @@
 .current-menu-item.current_page_item a {
-	color: #a8741a;
+	color: #a8741a !important;
 }
 /* Remove spinner on WooCommerce checkout page */
 .woocommerce .loader::before {
@@ -153,9 +153,25 @@ h2.woocommerce-loop-product__title,
 .slide-bg {
 	background-image: unset;
 	background-repeat: no-repeat;
-	background-position: center center;
+	background-position: center center !important;
 	background-size: cover;
 	min-height: 940px;
+	position: relative;
+}
+
+.slide-bg::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	background-color: #0000002b;
+	height: 100%;
+}
+
+@media (max-width: 575px) {
+	.slide-bg {
+		min-height: 50vh;
+	}
 }
 
 .ad-banner-image {
@@ -223,4 +239,17 @@ a.button.wc-forward.wp-element-button,
 .woocommerce a.added_to_cart {
 	width: 100%;
 	text-align: center;
+}
+@media (max-width: 991px) {
+	.transparent-header {
+		position: absolute;
+	}
+}
+.service-area .service-nav .service-item .content > h4 {
+	font-size: 24px;
+	margin-bottom: 10px;
+	font-weight: 400;
+	margin-bottom: 30px;
+	line-height: 1.2;
+	font-family: "Prata", serif;
 }

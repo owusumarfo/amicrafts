@@ -129,7 +129,7 @@ function amicrafts_setup()
 	add_theme_support('editor-color-palette');
 	add_theme_support('featured-content');
 	add_theme_support('menus');
-	add_theme_support('post-formats');
+	add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));
 	add_theme_support('post-thumbnails');
 	add_theme_support('widgets');
 	add_theme_support('custom-units');
@@ -363,3 +363,43 @@ function display_percentage_on_sale_badge($html, $post, $product)
 	}
 	return '<span class="sticker">' . esc_html__('-', 'woocommerce') . $percentage . '</span>'; // If needed then change or remove "up to -" text
 }
+/* Slides Post Type */
+function slides()
+{
+	$options = array(
+		'labels' => array(
+			'name' => 'Slides',
+			'singular_name' => 'Slide',
+			'add_new' => 'Add New',
+			'menu_name' => 'Slides',
+			'all_items' => 'All Slides',
+			'add_new_item' => 'Add New Slide',
+			'edit_item' => 'Edit Slide',
+			'new_item' => 'Add New Slide',
+			'insert_into_item' => 'Insert into slide'
+		),
+		'public' => true,
+		'has_archive' => false,
+		'show_in_rest' => true,
+		'supports' => array('title', 'custom-fields', 'revisions', 'page-attributes'),
+		'menu_icon' => 'dashicons-slides',
+		'hierarchical' => false,
+		'delete_with_user' => false,
+		//change the custom post type slug so it will not coflict with the page slug-> this allow the pagination to work
+		//Also change got to Settings->Reading and change "Blog pages show at most" to 1
+		'rewrite' => array('slug' => 'cpt_slides', 'with_front' => true),
+
+	);
+	register_post_type('slides', $options);
+}
+add_action('init', 'slides');
+
+// Chang the menu link color to white on the homepage only
+function add_menu_link_class($atts, $item, $args)
+{
+	if (property_exists($args, 'link_class') && is_front_page()) {
+		$atts['class'] = $args->link_class;
+	}
+	return $atts;
+}
+add_filter('nav_menu_link_attributes', 'add_menu_link_class', 1, 3);

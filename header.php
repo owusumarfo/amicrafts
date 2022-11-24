@@ -49,6 +49,18 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="transparent-header_nav position-relative">
+
+                                    <div class="header-right_area header-right_area-2 d-lg-none d-block">
+                                        <ul>
+                                            <li class="mobile-menu_wrap d-inline-block d-lg-none">
+                                                <a href="#mobileMenu" class="mobile-menu_btn toolbar-btn color--white">
+                                                    <i class="ion-android-menu <?php if (is_front_page()) : echo 'text-white';
+                                                                                endif; ?>"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
                                     <div class="header-logo_area">
                                         <a href="<?php echo site_url(); ?>">
                                             <img src="<?php echo get_template_directory_uri(); ?>/html-v2/assets/img/ami-logo.png" width="100px" alt="Header Logo">
@@ -63,9 +75,12 @@
                                                 wp_nav_menu(array(
                                                     "theme_location" => "amicrafts_primary_menu",
                                                     "menu" => "Primary Menu",
+                                                    "menu_class" => "text-white",
                                                     "container" => "<nav>",
                                                     "container_class" => "main-nav d-flex justify-content-center",
                                                     "items_wrap" => '<ul>%3$s</ul>',
+                                                    'list_item_class'  => 'text-white',
+                                                    "link_class" => 'text-white'
                                                 ))
                                                 ?>
                                         </nav>
@@ -93,7 +108,8 @@
                                                 <a href="<?php echo wc_get_cart_url(); ?>" class="minicart-btn">
                                                     <div class="minicart-count_area">
                                                         <span class="item-count"><?php echo wc()->cart->get_cart_contents_count(); ?></span>
-                                                        <i class="ion-bag"></i>
+                                                        <i class="ion-bag <?php if (is_front_page()) : echo 'text-white';
+                                                                            endif; ?>"></i>
                                                     </div>
                                                 </a>
                                             </li>
@@ -101,14 +117,11 @@
                                             <?php if (!is_checkout()) : ?>
                                             <li class="">
                                                 <a href="#searchBar" class="search-btn toolbar-btn">
-                                                    <i class="ion-ios-search"></i>
+                                                    <i class="ion-ios-search <?php if (is_front_page()) : echo 'text-white';
+                                                                                    endif; ?>"></i>
                                                 </a>
                                             </li>
-                                            <li class="mobile-menu_wrap d-inline-block d-lg-none">
-                                                <a href="#mobileMenu" class="mobile-menu_btn toolbar-btn color--white">
-                                                    <i class="ion-android-menu"></i>
-                                                </a>
-                                            </li>
+
                                             <!-- <li>
                                                 <a href="#offcanvasMenu" class="menu-btn toolbar-btn color--white d-none d-lg-block">
                                                     <i class="ion-android-menu"></i>

@@ -12,16 +12,38 @@
                 "autoplaySpeed" : 7000,
                 "pauseOnHover" : false,
                 "pauseOnFocus" : false
-                }' data-slick-responsive='[
-                {"breakpoint":768, "settings": {
-                "slidesToShow": 1
-                }},
-                {"breakpoint":575, "settings": {
-                "slidesToShow": 1
-                }}
-            ]'>
+                }'>
+
+
+
+                <?php
+                $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+                $args = array(
+                    'post_type' => 'slides',
+                    'post_status' => 'publish',
+                    'posts_per_page' => 3,
+                    'orderby' => 'date',
+                    'order' => 'ASC',
+                    'paged' => $paged,
+                );
+                $loop = new WP_Query($args);
+                if ($loop->have_posts()) :
+                    while ($loop->have_posts()) : $loop->the_post();
+                ?>
+
                 <!-- removed class:bg-1 -->
-                <div class="slide-item slide-bg animation-style-01" style="background-image:url(<?php echo the_field('slide_1_image') ?>)">
+                <div class="slide-item slide-bg animation-style-01" style="background-image:url(<?php echo wp_get_attachment_image_url(get_post_meta($post->ID, 'slider_image', true)); ?>)">
+                    <div class="slider-progress"></div>
+                </div>
+                <?php endwhile;
+                    wp_reset_postdata();
+                endif; ?>
+
+
+
+                <!-- removed class:bg-1 -->
+                <!-- <div class="slide-item slide-bg animation-style-01" style="background-image:url(<?php echo the_field('slide_1_image') ?>)">
                     <div class="slider-progress"></div>
                     <div class="container">
                         <div class="slide-content">
@@ -33,10 +55,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- removed class:bg-2 -->
-                <div class="slide-item slide-bg animation-style-01" style="background-image:url(<?php echo the_field('slide_2_image') ?>)">
+                <!-- <div class="slide-item slide-bg animation-style-01" style="background-image:url(<?php echo the_field('slide_2_image') ?>)">
                     <div class="slider-progress"></div>
                     <div class="container">
                         <div class="slide-content">
@@ -48,7 +70,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
             </div>
 
