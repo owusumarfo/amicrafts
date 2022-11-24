@@ -268,7 +268,7 @@ remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
 // {
 // 	echo "<div class='contact-main-page'><div class='container mt-5'>";
 // }
-// add_action('woocommerce_before_main_content', 'open_container_div_row_classes', 5);
+// add_action('woocommerce_before_cart', 'open_container_div_row_classes', 5);
 
 // function close_container_div_row_classes()
 // {
