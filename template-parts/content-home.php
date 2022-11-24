@@ -85,6 +85,7 @@
                 <div class="service-nav">
                     <div class="row">
 
+                        <?php if (!empty(get_post_meta($post->ID, 'service_1_title', true))) : ?>
                         <div class="col-lg-4 col-md-4">
                             <div class="service-item">
                                 <div class="content">
@@ -94,7 +95,9 @@
                                 </div>
                             </div>
                         </div>
+                        <?php endif; ?>
 
+                        <?php if (!empty(get_post_meta($post->ID, 'service_2_title', true))) : ?>
                         <div class="col-lg-4 col-md-4">
                             <div class="service-item">
                                 <div class="content">
@@ -104,7 +107,10 @@
                                 </div>
                             </div>
                         </div>
+                        <?php endif; ?>
 
+
+                        <?php if (!empty(get_post_meta($post->ID, 'service_3_title', true))) : ?>
                         <div class="col-lg-4 col-md-4">
                             <div class="service-item">
                                 <div class="content">
@@ -114,6 +120,8 @@
                                 </div>
                             </div>
                         </div>
+                        <?php endif; ?>
+
 
                         <!-- <div class="col-lg-4 col-md-4">
                             <div class="service-item">
