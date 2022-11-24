@@ -50,9 +50,9 @@
                             <div class="col-lg-12">
                                 <div class="transparent-header_nav position-relative">
 
-                                    <div class="header-right_area header-right_area-2 d-lg-none d-block">
+                                    <div class="header-right_area header-right_area-2 d-lg-none d-flex">
                                         <ul>
-                                            <li class="mobile-menu_wrap d-inline-block d-lg-none">
+                                            <li class="mobile-menu_wrap d-inline-flex d-lg-none">
                                                 <a href="#mobileMenu" class="mobile-menu_btn toolbar-btn color--white">
                                                     <i class="ion-android-menu <?php if (is_front_page()) : echo 'text-white';
                                                                                 endif; ?>"></i>
