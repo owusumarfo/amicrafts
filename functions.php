@@ -133,7 +133,7 @@ function amicrafts_setup()
 	add_theme_support('post-thumbnails');
 	add_theme_support('widgets');
 	add_theme_support('custom-units');
-	add_theme_support('widgets-block-editor');
+	// add_theme_support('widgets-block-editor');
 }
 add_action('after_setup_theme', 'amicrafts_setup');
 
