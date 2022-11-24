@@ -403,3 +403,6 @@ function add_menu_link_class($atts, $item, $args)
 	return $atts;
 }
 add_filter('nav_menu_link_attributes', 'add_menu_link_class', 1, 3);
+
+// 
+add_filter('big_image_size_threshold', '__return_false');
