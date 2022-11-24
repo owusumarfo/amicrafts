@@ -116,7 +116,7 @@
                                             </li>
 
                                             <?php if (!is_checkout()) : ?>
-                                            <li class="d-none d-lg-inline-block">
+                                            <li class="">
                                                 <a href="#searchBar" class="search-btn toolbar-btn">
                                                     <i class="ion-ios-search <?php if (is_front_page()) : echo 'text-white';
                                                                                     endif; ?>"></i>
