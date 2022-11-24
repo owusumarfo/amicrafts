@@ -64,7 +64,7 @@
                                     <div class="header-logo_area">
                                         <a href="<?php echo site_url(); ?>">
                                             <img class="d-none d-lg-block" src="<?php echo get_template_directory_uri(); ?>/html-v2/assets/img/ami-logo.png" width="100px" alt="Header Logo">
-                                            <img class="d-block d-lg-none" src="<?php echo get_template_directory_uri(); ?>/html-v2/assets/img/ami-logo-white.jpg" width="100px" alt="Header Logo">
+                                            <img class="d-block d-lg-none" src="<?php echo get_template_directory_uri(); ?>/html-v2/assets/img/ami-logo-white.jpg" width="85px" alt="Header Logo">
                                         </a>
                                     </div>
 
