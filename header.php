@@ -105,7 +105,7 @@
 
                                     <div class="header-right_area header-right_area-2">
                                         <ul>
-                                            <li class="minicart-wrap">
+                                            <li class="minicart-wrap me-0 me-lg-3">
                                                 <a href="<?php echo wc_get_cart_url(); ?>" class="minicart-btn">
                                                     <div class="minicart-count_area">
                                                         <span class="item-count"><?php echo wc()->cart->get_cart_contents_count(); ?></span>
@@ -116,7 +116,7 @@
                                             </li>
 
                                             <?php if (!is_checkout()) : ?>
-                                            <li class="">
+                                            <li class="d-none d-lg-inline-block">
                                                 <a href="#searchBar" class="search-btn toolbar-btn">
                                                     <i class="ion-ios-search <?php if (is_front_page()) : echo 'text-white';
                                                                                     endif; ?>"></i>
