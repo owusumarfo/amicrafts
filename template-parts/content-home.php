@@ -177,12 +177,12 @@
                                         <div class="product-img">
                                             <a href="<?php echo get_permalink($product->id); ?>">
                                                 <?php
-                                                        $product_image = $product->image_id ? wp_get_attachment_image_url($product->image_id) : "";
+                                                        $product_image = $product->image_id ? wp_get_attachment_image_url($product->image_id, 'full') : "";
                                                         // echo $product_image;
                                                         $product_gallery = array();
                                                         if (count($product->gallery_image_ids) > 0) :
                                                             foreach ($product->gallery_image_ids as $id) :
-                                                                array_push($product_gallery, wp_get_attachment_image_url($id));
+                                                                array_push($product_gallery, wp_get_attachment_image_url($id, 'full'));
                                                             endforeach;
                                                         endif;
                                                         ?>
