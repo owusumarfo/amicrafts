@@ -171,6 +171,22 @@ function amicrafts_widgets_init()
 }
 add_action('widgets_init', 'amicrafts_widgets_init');
 
+function custom_sidebar()
+{
+	register_sidebar(
+		array(
+			'name'          => esc_html__('Custom Sidebar', 'amicrafts'),
+			'id'            => 'sidebar-2',
+			'description'   => esc_html__('Add widgets here.', 'amicrafts'),
+			'before_widget' => '',
+			'after_widget'  => '',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
+}
+add_action('widgets_init', 'custom_sidebar');
+
 /**
  * Enqueue scripts and styles.
  */
@@ -404,5 +420,31 @@ function add_menu_link_class($atts, $item, $args)
 }
 add_filter('nav_menu_link_attributes', 'add_menu_link_class', 1, 3);
 
-// 
-// add_filter('big_image_size_threshold', '__return_false');
+// Limite the excerpt
+function wpdocs_custom_excerpt_length($length)
+{
+	return 10;
+}
+add_filter('excerpt_length', 'wpdocs_custom_excerpt_length', 999);
+
+// Paginate
+function wp_paginate($query)
+{
+
+	$total_pages = $query->max_num_pages;
+	$big = 999999999; // need an unlikely integer
+
+	if ($total_pages > 1) {
+		$current_page = max(1, get_query_var('paged'));
+
+		echo paginate_links(array(
+			'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+			'format' => '?paged=%#%',
+			'current' => $current_page,
+			'total' => $total_pages,
+			'prev_text' => __('Previous'),
+			'next_text' => __('Next'),
+			'type' => 'list',
+		));
+	}
+}

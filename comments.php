@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying comments
  *
@@ -15,63 +16,78 @@
  * the visitor has not yet entered the password we will
  * return early without loading the comments.
  */
-if ( post_password_required() ) {
+if (post_password_required()) {
 	return;
 }
 ?>
 
-<div id="comments" class="comments-area">
+<div id="comments" class="comments-area kenne-comment-section">
 
-	<?php
+    <?php
 	// You can start editing here -- including this comment!
-	if ( have_comments() ) :
-		?>
-		<h2 class="comments-title">
-			<?php
+	if (have_comments()) :
+	?>
+    <h3 class="comments-title">
+        <?php
 			$amicrafts_comment_count = get_comments_number();
-			if ( '1' === $amicrafts_comment_count ) {
+			if ('1' === $amicrafts_comment_count) {
 				printf(
 					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'amicrafts' ),
-					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
+					esc_html__('One thought on &ldquo;%1$s&rdquo;', 'amicrafts'),
+					'<span>' . wp_kses_post(get_the_title()) . '</span>'
 				);
 			} else {
-				printf( 
+				printf(
 					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $amicrafts_comment_count, 'comments title', 'amicrafts' ) ),
-					number_format_i18n( $amicrafts_comment_count ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
+					// esc_html(_nx('%1$s COMMENT &ldquo;%2$s&rdquo;', '%1$s COMMENTS &ldquo;%2$s&rdquo;', $amicrafts_comment_count, 'comments title', 'amicrafts')),
+					esc_html(_nx(
+						'%1$s COMMENT',
+						'%1$s COMMENTS',
+						$amicrafts_comment_count,
+						'comments title',
+						'amicrafts'
+					)),
+					number_format_i18n($amicrafts_comment_count), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					'<span>' . wp_kses_post(get_the_title()) . '</span>'
 				);
 			}
 			?>
-		</h2><!-- .comments-title -->
+    </h3><!-- .comments-title -->
 
-		<?php the_comments_navigation(); ?>
+    <?php the_comments_navigation(); ?>
 
-		<ol class="comment-list">
-			<?php
+    <ul class="comment-list">
+        <?php
 			wp_list_comments(
 				array(
-					'style'      => 'ol',
+					'style'      => 'ul',
 					'short_ping' => true,
 				)
 			);
 			?>
-		</ol><!-- .comment-list -->
+    </ul><!-- .comment-list -->
 
-		<?php
+    <?php
 		the_comments_navigation();
 
 		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if ( ! comments_open() ) :
-			?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'amicrafts' ); ?></p>
-			<?php
+		if (!comments_open()) :
+		?>
+    <p class="no-comments"><?php esc_html_e('Comments are closed.', 'amicrafts'); ?></p>
+    <?php
 		endif;
 
 	endif; // Check for have_comments().
 
-	comment_form();
+	$comment_args = array(
+		'class_container' => 'kenne-blog-comment-wrapper',
+		'title_reply' => 'Leave a Reply',
+		'submit' => 'Post Comment',
+		'submit_button' => '<input name="%1$s" type="submit" id="%2$s" class="kenne-btn transparent-btn transparent-btn-2" value="%4$s" />',
+		'cancel_reply_before' => '<span class="ms-4 cancel-reply">',
+		'cancel_reply_after' => '</span>'
+	);
+	comment_form($comment_args);
 	?>
 
 </div><!-- #comments -->
