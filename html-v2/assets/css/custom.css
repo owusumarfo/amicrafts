@@ -261,6 +261,7 @@ img.attachment-post-thumbnail.size-post-thumbnail.wp-post-image {
 .blog-img img {
 	height: 270px;
 	object-fit: cover;
+	width: 100%;
 }
 
 /* comments */
