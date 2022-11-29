@@ -345,7 +345,7 @@ ol.has-avatars.alignleft.wp-block-latest-comments {
 	position: absolute;
 }
 a.tag-cloud-link {
-	font-size: 14px;
+	font-size: 14px !important;
 	border: 1px solid #e5e5e5;
 	padding: 5px 15px;
 	display: inline-block;
