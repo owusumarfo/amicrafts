@@ -253,7 +253,8 @@ a.button.wc-forward.wp-element-button,
 	line-height: 1.2;
 	font-family: "Prata", serif;
 }
-.blog-image img {
+.blog-image img,
+img.attachment-post-thumbnail.size-post-thumbnail.wp-post-image {
 	height: auto;
 }
 
