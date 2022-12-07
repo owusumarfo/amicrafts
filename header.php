@@ -75,19 +75,103 @@
                                     <div class="main-menu_area d-none d-lg-block">
 
                                         <?php if (!is_checkout()) : ?>
+
                                         <nav class="main-nav d-flex justify-content-center">
-                                            <?php
-                                                wp_nav_menu(array(
-                                                    "theme_location" => "amicrafts_primary_menu",
-                                                    "menu" => "Primary Menu",
-                                                    "menu_class" => "text-white",
-                                                    "container" => "<nav>",
-                                                    "container_class" => "main-nav d-flex justify-content-center",
-                                                    "items_wrap" => '<ul>%3$s</ul>',
-                                                    'list_item_class'  => 'text-white',
-                                                    "link_class" => 'text-white'
-                                                ))
-                                                ?>
+
+                                            <ul>
+                                                <?php $primary_menu = wp_get_nav_menu_items("Primary Menu"); ?>
+                                                <?php
+                                                    $parent_menus = array();
+                                                    $sub_menus = array();
+                                                    foreach ($primary_menu as $menu) :
+
+                                                        if ($menu->menu_item_parent === "0") :
+                                                            array_push($parent_menus, $menu);
+                                                        endif;
+
+
+                                                        if (intval($menu->menu_item_parent) > 0) :
+                                                            array_push($sub_menus, $menu);
+                                                        endif;
+
+                                                    endforeach;
+                                                    ?>
+
+                                                <?php
+                                                    foreach ($parent_menus as $parent_menu) :
+                                                        $children_menus = array();
+                                                        foreach ($sub_menus as $child_menu) :
+                                                            if (intval($child_menu->menu_item_parent) === $parent_menu->ID) :
+                                                                array_push($children_menus, $child_menu);
+                                                            endif;
+                                                        endforeach;
+                                                    ?>
+                                                <li class="<?php
+                                                                    if (count($children_menus) > 0 && $parent_menu->title === 'Shop') :
+                                                                        echo 'megamenu-holder position-static';
+                                                                    elseif (count($children_menus) > 0) :
+                                                                        echo 'dropdown-holder';
+                                                                    else :
+                                                                        echo '';
+                                                                    endif;
+                                                                    ?>">
+                                                    <a href="<?php echo $parent_menu->url; ?>">
+                                                        <?php echo $parent_menu->title; ?>
+                                                        <?php if (count($children_menus) > 0) : ?>
+                                                        <i class="ion-chevron-down"></i>
+                                                        <?php endif; ?>
+                                                    </a>
+                                                    <?php if (count($children_menus) > 0) : ?>
+                                                    <ul class="<?php
+                                                                            if ($parent_menu->title === 'Shop') :
+                                                                                echo 'kenne-megamenu';
+                                                                            else :
+                                                                                echo 'kenne-dropdown';
+                                                                            endif;
+                                                                            ?>">
+
+                                                        <?php
+                                                                    foreach ($children_menus as $child_menu) :
+                                                                        $sub_menus_level_2 = array();
+
+                                                                        foreach ($sub_menus as $sub_menu) :
+                                                                            if (intval($sub_menu->menu_item_parent) === $child_menu->ID) :
+                                                                                array_push($sub_menus_level_2, $sub_menu);
+                                                                            endif;
+                                                                        endforeach;
+                                                                    ?>
+                                                        <li>
+                                                            <a class="megamenu-title" href="<?php echo $child_menu->url; ?>"><?php echo $child_menu->title ?></a>
+                                                            <?php if (count($sub_menus_level_2) > 0) : ?>
+                                                            <ul>
+                                                                <?php foreach ($sub_menus_level_2 as $sub_menu) : ?>
+                                                                <li>
+                                                                    <a href="<?php echo $sub_menu->url ?>"><?php echo $sub_menu->title; ?></a>
+                                                                </li>
+                                                                <?php endforeach; ?>
+                                                            </ul>
+                                                            <?php endif; ?>
+                                                        </li>
+                                                        <?php endforeach; ?>
+                                                    </ul>
+                                                    <?php endif; ?>
+                                                </li>
+                                                <?php endforeach; ?>
+                                            </ul>
+
+
+                                            <!-- <?php
+                                                        wp_nav_menu(array(
+                                                            "theme_location" => "amicrafts_primary_menu",
+                                                            "menu" => "Primary Menu",
+                                                            "menu_class" => "text-white",
+                                                            "container" => "<nav>",
+                                                            "container_class" => "main-nav d-flex justify-content-center",
+                                                            "items_wrap" => '<ul>%3$s</ul>',
+                                                            'list_item_class'  => 'text-white',
+                                                            "link_class" => 'text-white'
+                                                        ))
+                                                        ?> -->
                                         </nav>
                                         <?php endif; ?>
 

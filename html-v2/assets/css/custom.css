@@ -385,3 +385,14 @@ ul.page-numbers li:last-child span {
 ul.page-numbers li span {
 	color: #a8741a;
 }
+
+/* mega menu title class */
+.main-nav > ul > li.megamenu-holder > ul > li > a.megamenu-title {
+	border-bottom: 1px solid #e5e5e5;
+	position: relative;
+	font-weight: 500;
+	font-size: 18px;
+	display: inline-block;
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+}
