@@ -448,3 +448,14 @@ function wp_paginate($query)
 		));
 	}
 }
+
+// Remove required from email field on checkout
+add_filter('woocommerce_checkout_fields', 'no_email_validation', 20);
+
+function no_email_validation($fields)
+{
+
+	$fields['billing']['billing_email']['required'] = false;
+
+	return $fields;
+}

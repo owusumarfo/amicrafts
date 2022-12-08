@@ -1,6 +1,9 @@
 .current-menu-item.current_page_item a {
 	color: #a8741a !important;
 }
+.offcanvas-navigation .mobile-menu li a {
+	text-transform: capitalize;
+}
 /* Remove spinner on WooCommerce checkout page */
 .woocommerce .loader::before {
 	visibility: hidden !important;

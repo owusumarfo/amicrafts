@@ -72,6 +72,7 @@
                                         </a>
                                     </div>
 
+                                    <!-- Desktop Menu -->
                                     <div class="main-menu_area d-none d-lg-block">
 
                                         <?php if (!is_checkout()) : ?>
@@ -122,7 +123,7 @@
                                                             echo '';
                                                         endif;
                                                 ?>">
-                                                    <a href="<?php echo $parent_menu->url; ?>">
+                                                    <a class="text-capitalize" href="<?php echo $parent_menu->url; ?>">
                                                         <?php echo $parent_menu->title; ?>
                                                         <?php if (count($children_menus) > 0) : ?>
                                                         <i class="ion-chevron-down"></i>
@@ -197,7 +198,6 @@
                                         </nav> -->
                                     </div>
 
-
                                     <div class="header-right_area header-right_area-2">
                                         <ul>
                                             <li class="minicart-wrap me-0 me-lg-3">
@@ -235,6 +235,7 @@
                 </div>
 
 
+                <!-- Mobile menud -->
                 <div class="mobile-menu_wrapper" id="mobileMenu">
                     <div class="offcanvas-menu-inner">
                         <div class="container">
