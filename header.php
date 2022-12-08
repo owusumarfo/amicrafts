@@ -79,9 +79,7 @@
                                         <nav class="main-nav d-flex justify-content-center">
 
                                             <ul>
-                                                <?php $primary_menu = wp_get_nav_menu_items("Primary Menu");
-                                                    echo '<pre>' . json_encode($primary_menu, JSON_PRETTY_PRINT) . '</pre>';
-                                                    ?>
+                                                <?php $primary_menu = wp_get_nav_menu_items("Primary Menu");     ?>
                                                 <?php
                                                     $parent_menus = array();
                                                     $sub_menus = array();
