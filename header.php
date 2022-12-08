@@ -79,7 +79,9 @@
                                         <nav class="main-nav d-flex justify-content-center">
 
                                             <ul>
-                                                <?php $primary_menu = wp_get_nav_menu_items("Primary Menu"); ?>
+                                                <?php $primary_menu = wp_get_nav_menu_items("Primary Menu");
+                                                    echo '<pre>' . json_encode($primary_menu, JSON_PRETTY_PRINT) . '</pre>';
+                                                    ?>
                                                 <?php
                                                     $parent_menus = array();
                                                     $sub_menus = array();
@@ -106,15 +108,22 @@
                                                             endif;
                                                         endforeach;
                                                     ?>
-                                                <li class="<?php
-                                                                    if (count($children_menus) > 0 && $parent_menu->title === 'Shop') :
-                                                                        echo 'megamenu-holder position-static';
-                                                                    elseif (count($children_menus) > 0) :
-                                                                        echo 'dropdown-holder';
-                                                                    else :
-                                                                        echo '';
-                                                                    endif;
-                                                                    ?>">
+                                                <li class=" 
+                                                <?php
+                                                        // if (str_contains(explode('.', get_page_template_slug())[0], strtolower($parent_menu->title))) :
+                                                        //     echo 'active ';
+                                                        // else :
+                                                        //     echo '';
+                                                        // endif;
+
+                                                        if (count($children_menus) > 0 && $parent_menu->title === 'Shop') :
+                                                            echo 'megamenu-holder position-static';
+                                                        elseif (count($children_menus) > 0) :
+                                                            echo 'dropdown-holder';
+                                                        else :
+                                                            echo '';
+                                                        endif;
+                                                ?>">
                                                     <a href="<?php echo $parent_menu->url; ?>">
                                                         <?php echo $parent_menu->title; ?>
                                                         <?php if (count($children_menus) > 0) : ?>

@@ -396,3 +396,11 @@ ul.page-numbers li span {
 	padding-bottom: 15px;
 	margin-bottom: 15px;
 }
+.main-nav > ul > li.megamenu-holder > ul > li > a.megamenu-title:before {
+	content: "";
+	width: 50%;
+	height: 1px;
+	position: absolute;
+	bottom: -1px;
+	background-color: #a8741a;
+}
