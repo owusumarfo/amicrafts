@@ -49,7 +49,7 @@
 
                             <?php if (!empty(get_post_meta($post->ID, 'email_1', true)) || !empty(get_post_meta($post->ID, 'email_2', true))) : ?>
                             <div class="single-contact-block last-child">
-                                <h4><i class="fa fa-envelope-o"></i> Email</h4>
+                                <h4><i class="fa fa-envelope"></i> Email</h4>
                                 <p><a href="mailto:<?php the_field('email_1'); ?>"><?php the_field('email_1'); ?></a></p>
                                 <p><a href="mailto:<?php the_field('email_2'); ?>"><?php the_field('email_2'); ?></a></p>
                             </div>
