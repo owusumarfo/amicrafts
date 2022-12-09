@@ -36,8 +36,14 @@
                             <?php if (!empty(get_post_meta($post->ID, 'mobile', true)) || !empty(get_post_meta($post->ID, 'hot_line', true))) : ?>
                             <div class="single-contact-block">
                                 <h4><i class="fa fa-phone"></i> Phone</h4>
+
+                                <?php if (!empty(get_post_meta($post->ID, 'mobile', true))) : ?>
                                 <p>Mobile: <a href="tel:<?php the_field('mobile'); ?>"><?php the_field('mobile'); ?></a></p>
+                                <?php endif; ?>
+
+                                <?php if (!empty(get_post_meta($post->ID, 'hot_line', true))) : ?>
                                 <p>Hotline: <a href="tel:<?php the_field('hot_line'); ?>"><?php the_field('hot_line'); ?></a></p>
+                                <?php endif; ?>
                             </div>
                             <?php endif; ?>
 
