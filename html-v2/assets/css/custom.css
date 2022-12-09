@@ -473,3 +473,11 @@ ul.page-numbers li span {
 /* .contact-form label span textarea {
 	height: 200px;
 } */
+
+.wpcf7 form.sent .wpcf7-response-output {
+	border-color: #a8741a !important;
+}
+.wpcf7 form .wpcf7-response-output {
+	margin: 0 !important;
+	padding: 0.5em !important;
+}
