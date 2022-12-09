@@ -329,7 +329,26 @@
         <?php endif; ?>
         <!-- Kenne's Content Wrapper Area End Here -->
 
-        <!-- Discover More -->
-        <div class="kenne-btn-ps_center mb-5">
-            <a class="kenne-btn transparent-btn black-color square-btn" href="/shop">Discover More</a>
+        <div class="banner-area-5 pt-0 kenne-content_wrapper ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="banner-item img-hover_effect">
+
+                            <div class="ad-banner-image banner-img" style="background-image: url(<?php echo the_field('discover_more_image') ?>);"></div>
+
+                            <div class="banner-content right">
+                                <span><?php echo the_field('discover_more_top_text'); ?></span>
+                                <h3>
+                                    <?php echo the_field('discover_more_title'); ?>
+                                </h3>
+                                <div class="kenne-btn-ps_center">
+                                    <a class="kenne-btn transparent-btn black-color square-btn" href="<?php echo the_field('discover_more_button_url'); ?>"><?php echo the_field('discover_more_button_text'); ?></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
