@@ -358,35 +358,36 @@ a.tag-cloud-link {
 }
 /* page numbers */
 ul.page-numbers {
-	padding: 10px 0;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
+	padding: 10px 0 !important;
+	display: flex !important;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	-ms-flex-pack: center;
 	justify-content: center;
 	border-radius: 25px;
-	border: 2px solid #a8741a;
+	border: 2px solid #a8741a !important;
+	margin: 0 !important;
 }
 
 ul.page-numbers li {
-	display: inline-block;
+	display: inline-block !important;
+	border: 0 !important;
 }
 ul.page-numbers li a,
 ul.page-numbers li span {
-	color: #242424;
-	padding: 0 25px;
-	display: block;
+	color: #242424 !important;
+	padding: 0 25px !important;
+	display: block !important;
 	border-right: 1px solid #a8741a;
+	background: transparent !important;
 }
 ul.page-numbers li:last-child a,
 ul.page-numbers li:last-child span {
 	border-right: 0;
 }
 ul.page-numbers li span {
-	color: #a8741a;
+	color: #a8741a !important;
+	background: transparent !important;
 }
 
 /* mega menu title class */
