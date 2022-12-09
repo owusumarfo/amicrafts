@@ -28,15 +28,30 @@
                     </div>
                     <?php endif; ?>
 
+                    <?php
+                    if (!empty(get_post_meta($post->ID, 'title', true)) || !empty(get_post_meta($post->ID, 'short_description', true)) || !empty(get_post_meta($post->ID, 'button_text', true))) :
+                    ?>
                     <div class="col-lg-6 col-md-7 d-flex align-items-center">
                         <div class="overview-content">
+
+                            <?php if (!empty(get_post_meta($post->ID, 'title', true))) : ?>
                             <h2><?php echo the_field('title'); ?></h2>
+                            <?php endif; ?>
+
+                            <?php if (!empty(get_post_meta($post->ID, 'short_description', true))) : ?>
                             <p class="short_desc"><?php echo the_field('short_description'); ?></p>
+                            <?php endif; ?>
+
+                            <?php if (!empty(get_post_meta($post->ID, 'button_url', true))) : ?>
                             <div class="kenne-about-us_btn-area">
                                 <a class="about-us_btn" href="<?php echo the_field('button_url'); ?>"><?php echo the_field('button_text'); ?></a>
                             </div>
+                            <?php endif; ?>
+
                         </div>
                     </div>
+                    <?php endif; ?>
+
                 </div>
 
                 <div class="my-5">
