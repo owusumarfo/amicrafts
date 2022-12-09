@@ -414,3 +414,8 @@ ul.page-numbers li span {
 	bottom: -1px;
 	background-color: #a8741a;
 }
+
+/* remove max hieght from submenu for mobile */
+.offcanvas-navigation .mobile-menu li .sub-menu {
+	max-height: unset !important;
+}
