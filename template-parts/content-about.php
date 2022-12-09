@@ -17,6 +17,8 @@
             <div class="container">
 
                 <div class="row">
+
+                    <?php if (the_field('banner')) : ?>
                     <div class="col-lg-6 col-md-5">
                         <div class="overview-img text-center img-hover_effect">
                             <!-- <a href="#"> -->
@@ -24,6 +26,8 @@
                             <!-- </a> -->
                         </div>
                     </div>
+                    <?php endif; ?>
+
                     <div class="col-lg-6 col-md-7 d-flex align-items-center">
                         <div class="overview-content">
                             <h2><?php echo the_field('title'); ?></h2>
