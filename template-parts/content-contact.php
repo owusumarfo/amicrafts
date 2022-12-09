@@ -4,7 +4,7 @@
                 <div class="breadcrumb-content mt-4">
                     <h2>Contact Us</h2>
                     <ul>
-                        <li><a href="<?php echo site_url();?>">Home</a></li>
+                        <li><a href="<?php echo site_url(); ?>">Home</a></li>
                         <li class="active">Contact Us</li>
                     </ul>
                 </div>
@@ -19,31 +19,45 @@
             </div>
             <div class="container">
                 <div class="row">
+
+                    <!-- Right   -->
                     <div class="col-lg-5 offset-lg-1 col-md-12 order-1 order-lg-2">
                         <div class="contact-page-side-content">
                             <h3 class="contact-page-title">Contact Us</h3>
-                            <p class="contact-page-message">Claritas est etiam processus dynamicus, qui sequitur
-                                mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum
-                                claram anteposuerit litterarum formas human.</p>
+                            <p class="contact-page-message"><?php the_field('short_description'); ?></p>
+
+                            <?php if (!empty(get_post_meta($post->ID, 'address', true))) : ?>
                             <div class="single-contact-block">
                                 <h4><i class="fa fa-fax"></i> Address</h4>
-                                <p>123 Main Street, Anytown, CA 12345 – USA</p>
+                                <p><a href="http://maps.google.com/maps?q=<?php the_field('address'); ?>" target="_blank"><?php the_field('address'); ?></a></p>
                             </div>
+                            <?php endif; ?>
+
+                            <?php if (!empty(get_post_meta($post->ID, 'mobile', true)) || !empty(get_post_meta($post->ID, 'hot_line', true))) : ?>
                             <div class="single-contact-block">
                                 <h4><i class="fa fa-phone"></i> Phone</h4>
-                                <p>Mobile: (233) 123 456 789</p>
-                                <p>Hotline: (233) 987 678 456</p>
+                                <p>Mobile: <a href="tel:<?php the_field('mobile'); ?>"><?php the_field('mobile'); ?></a></p>
+                                <p>Hotline: <a href="tel:<?php the_field('hot_line'); ?>"><?php the_field('hot_line'); ?></a></p>
                             </div>
+                            <?php endif; ?>
+
+                            <?php if (!empty(get_post_meta($post->ID, 'email_1', true)) || !empty(get_post_meta($post->ID, 'email_2', true))) : ?>
                             <div class="single-contact-block last-child">
                                 <h4><i class="fa fa-envelope-o"></i> Email</h4>
-                                <p>info@amicrafts.com</p>
-                                <p>support@amicrafts.com</p>
+                                <p><a href="mailto:<?php the_field('email_1'); ?>"><?php the_field('email_1'); ?></a></p>
+                                <p><a href="mailto:<?php the_field('email_2'); ?>"><?php the_field('email_2'); ?></a></p>
                             </div>
+                            <?php endif; ?>
+
                         </div>
                     </div>
+
+                    <!-- Left -->
                     <div class="col-lg-6 col-md-12 order-2 order-lg-1">
                         <div class="contact-form-content">
-                            <h3 class="contact-page-title">Tell Us Your Message</h3>
+                            <?php if (!empty(get_post_meta($post->ID, 'left_title', true))) : ?>
+                            <h3 class="contact-page-title"><?php the_field('left_title'); ?></h3>
+                            <?php endif; ?>
                             <div class="contact-form">
                                 <form id="contact-form" action="#">
                                     <div class="form-group">
