@@ -18,7 +18,7 @@
 
                 <div class="row">
 
-                    <?php if (the_field('banner')) : ?>
+                    <?php if (!empty(get_post_meta($post->ID, 'banner', true))) : ?>
                     <div class="col-lg-6 col-md-5">
                         <div class="overview-img text-center img-hover_effect">
                             <!-- <a href="#"> -->
