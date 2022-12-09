@@ -367,6 +367,12 @@ ul.page-numbers {
 	border-radius: 25px;
 	border: 2px solid #a8741a !important;
 	margin: 0 !important;
+	width: fit-content !important;
+}
+/* Center the page numbers */
+.woocommerce nav.woocommerce-pagination {
+	justify-content: center !important;
+	display: flex !important;
 }
 
 ul.page-numbers li {
