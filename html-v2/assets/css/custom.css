@@ -419,3 +419,8 @@ ul.page-numbers li span {
 .offcanvas-navigation .mobile-menu li .sub-menu {
 	max-height: unset !important;
 }
+
+/* Remove opacity .5 from color swatch */
+.wcsvfs-swatches .swatch-color {
+	opacity: 1 !important;
+}

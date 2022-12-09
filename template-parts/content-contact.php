@@ -65,6 +65,8 @@
                             <h3 class="contact-page-title"><?php the_field('left_title'); ?></h3>
                             <?php endif; ?>
                             <div class="contact-form">
+                                <?php the_content(); ?>
+
                                 <form id="contact-form" action="#">
                                     <div class="form-group">
                                         <label>Your Name <span class="required">*</span></label>
