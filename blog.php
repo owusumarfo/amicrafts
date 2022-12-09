@@ -43,8 +43,10 @@ get_header();
                         the_posts_navigation();
 
                     else :
-
-                        get_template_part('template-parts/content', 'none');
+                        ?>
+                    <h3>Nothing found</h3>
+                    <?php
+                    // get_template_part('template-parts/content', 'none');
 
                     endif;
                     ?>
