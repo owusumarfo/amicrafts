@@ -330,6 +330,6 @@
         <!-- Kenne's Content Wrapper Area End Here -->
 
         <!-- Discover More -->
-        <!-- <div class="kenne-btn-ps_center mb-5">
+        <div class="kenne-btn-ps_center mb-5">
             <a class="kenne-btn transparent-btn black-color square-btn" href="/shop">Discover More</a>
-        </div> -->
+        </div>
