@@ -464,7 +464,7 @@ function no_email_validation($fields)
 
 
 // Woocommerce custom addon------------------------------------------
-require get_template_directory() . '/inc/woocommerce-custom-addon.php';
+// require get_template_directory() . '/inc/woocommerce-custom-addon.php';
 
 /**
  * Create the section beneath the products tab
