@@ -230,6 +230,7 @@ function amicrafts_scripts()
 	wp_enqueue_script('ami-zoom', get_template_directory_uri() . '/html-v2/assets/js/plugins/jquery.zoom.min.js', array(), _S_VERSION, true);
 	wp_enqueue_script('ami-timecircles', get_template_directory_uri() . '/html-v2/assets/js/plugins/timecircles.js', array(), _S_VERSION, true);
 	wp_enqueue_script('ami-main', get_template_directory_uri() . '/html-v2/assets/js/main.js', array(), _S_VERSION, true);
+	wp_enqueue_script('ami-custom', get_template_directory_uri() . '/html-v2/assets/js/custom.js', array(), _S_VERSION, true);
 
 
 
@@ -462,5 +463,67 @@ function no_email_validation($fields)
 
 
 
-// Woocommerce custom addon
+// Woocommerce custom addon------------------------------------------
 require get_template_directory() . '/inc/woocommerce-custom-addon.php';
+
+/**
+ * Create the section beneath the products tab
+ **/
+add_filter('woocommerce_get_sections_products', 'add_personalize_item_section');
+function add_personalize_item_section($sections)
+{
+
+	$sections['wcpersonalizeditem'] = __('Personalized Items', 'text-domain');
+	return $sections;
+}
+
+/**
+ * Add settings to the specific section we created before
+ */
+add_filter('woocommerce_get_settings_products', 'wcpersonalzeditem_settings', 10, 2);
+function wcpersonalzeditem_settings($settings, $current_section)
+{
+	/**
+	 * Check the current section is what we want
+	 **/
+	if ($current_section == 'wcpersonalizeditem') {
+		$settings_personalized_item = array();
+		// Add Title to the Settings
+		$settings_personalized_item[] = array('name' => __('Item Personalization Settings', 'text-domain'), 'type' => 'title', 'desc' => __('The following options are used to configure product item personalization', 'text-domain'), 'id' => 'wcpersonalizeditem');
+
+		// Add checkbox option
+		$settings_personalized_item[] = array(
+			'name'     => __('Personalized Items', 'text-domain'),
+			'desc_tip' => __('This will automatically show item personalization option the single product page', 'text-domain'),
+			'id'       => 'wcpersonalizeditem_checkbox',
+			'type'     => 'checkbox',
+			'css'      => 'min-width:300px;',
+			'desc'     => __('Enable item personalization', 'text-domain'),
+		);
+
+		// Add second text field option
+		$settings_personalized_item[] = array(
+			'name'     => __('4 or less characters price (₵)', 'text-domain'),
+			'id'       => 'personalizeditem_4_or_less_characters_price',
+			'type'     => 'number',
+			'desc'     => __('Set the price 4 or less characters', 'text-domain'),
+		);
+
+		// Add third text field option
+		$settings_personalized_item[] = array(
+			'name'     => __('5 or more characters price (₵)', 'text-domain'),
+			'id'       => 'personalizeditem_5_or_more_characters_price',
+			'type'     => 'number',
+			'desc'     => __('Set the price for 5 or more characters', 'text-domain'),
+		);
+
+		$settings_personalized_item[] = array('type' => 'sectionend', 'id' => 'wcpersonalizeditem');
+		return $settings_personalized_item;
+
+		/**
+		 * If not, return the standard settings
+		 **/
+	} else {
+		return $settings;
+	}
+}
