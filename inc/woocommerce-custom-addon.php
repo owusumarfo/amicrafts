@@ -71,7 +71,6 @@ function ami_product_add_on_cart_item_data($cart_item, $product_id)
 {
     if ((isset($_POST['personalize_item_choice']) && $_POST['personalize_item_choice'] != 'no') && isset($_POST['personalize_item_characters'])) {
         $cart_item['personalize_item_characters'] = sanitize_text_field($_POST['personalize_item_characters']);
-        // $cart_item['data']->set_price($cart_item['data']->get_price() + 1);
     }
     return $cart_item;
 }
