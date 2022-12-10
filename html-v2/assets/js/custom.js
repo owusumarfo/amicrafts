@@ -11,6 +11,7 @@
 				break;
 			case "yes_4_or_less":
 				$("#personalize_item_characters").show();
+				$("#characters_input_label").text("Enter 4 or less characters");
 				$("#personalize_item_characters").find("input").attr("maxlength", 4);
 
 				if ($("#personalize_item_characters").find("input").val()) {
@@ -21,6 +22,7 @@
 				break;
 			case "yes_5_or_more":
 				$("#personalize_item_characters").show();
+				$("#characters_input_label").text("Enter 5 or more characters");
 				$("#personalize_item_characters").find("input").removeAttr("maxlength");
 				break;
 			default:

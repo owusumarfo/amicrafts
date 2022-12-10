@@ -20,21 +20,30 @@ function ami_product_add_on()
         $personalize_item_choice = isset($_POST['personalize_item_choice']) ? sanitize_text_field($_POST['personalize_item_choice']) : '';
         $personalize_item_characters = isset($_POST['personalize_item_characters']) ? sanitize_text_field($_POST['personalize_item_characters']) : '';
         echo '
-            <div class="form-group">
-                <label>Personalize your item?</label>
-                <select name="personalize_item_choice" value="' . $personalize_item_choice . '" id="personalize_item_choice">
-                    <option value="no">No</option>
-                    <option value="yes_4_or_less">Yes, up to 4 characters (₵' . number_format(get_option('personalizeditem_4_or_less_characters_price'), 2, '.', '') . ')</option>
-                    <option value="yes_5_or_more">Yes, 5 or more characters (₵' . number_format(get_option('personalizeditem_5_or_more_characters_price'), 2, '.', '') . ')</option>
-                </select>
-            </div>
-
-            <br>
-
-            <div class="form-group" id="personalize_item_characters" style="display:none;">
-                <label>Personalized Characters</label>
-                <input name="personalize_item_characters" value="' . $personalize_item_characters . '">
-            </div>
+            <table class="variations" cellspacing="0" role="presentation">
+                <tbody>
+                    <tr>
+                        <th class="label">
+                            <label for="personalize_item_choice">Personalize your item?</label>
+                        </th>
+                        <td class="value">
+                            <select name="personalize_item_choice" value="' . $personalize_item_choice . '" id="personalize_item_choice">
+                                <option value="no">No</option>
+                                <option value="yes_4_or_less">Yes, up to 4 characters (+₵' . number_format(get_option('personalizeditem_4_or_less_characters_price'), 2, '.', '') . ')</option>
+                                <option value="yes_5_or_more">Yes, 5 or more characters (+₵' . number_format(get_option('personalizeditem_5_or_more_characters_price'), 2, '.', '') . ')</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr id="personalize_item_characters" style="display:none;">
+                        <th class="label">
+                            <label id="characters_input_label" for="personalize_item_characters_input">Enter Characters</label>
+                        </th>
+                        <td class="value">
+                            <input name="personalize_item_characters" id="personalize_item_characters_input" value="' . $personalize_item_characters . '">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         ';
     }
 }

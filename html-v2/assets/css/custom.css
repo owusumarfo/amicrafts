@@ -243,6 +243,7 @@ a.button.wc-forward.wp-element-button,
 .woocommerce .quantity .qty {
 	border-radius: 0;
 	border: 1px solid #e5e5e5;
+	padding: 5px;
 }
 .woocommerce a.added_to_cart {
 	width: 100%;
@@ -463,18 +464,12 @@ ul.page-numbers li span {
 	border-color: #a8741a !important;
 }
 
-/* .contact-form label span input,
-.contact-form label span textarea,
-.contact-form label span select {
-	background-color: #ffffff;
-	width: 100%;
-	height: 50px;
-	line-height: 50px;
-	outline: none;
+input#personalize_item_characters_input {
+	padding: 5px;
+	border-radius: 0;
 	border: 1px solid #e5e5e5;
-	padding-left: 20px;
-	margin-top: 10px;
-} */
+	min-width: 75%;
+}
 /* .contact-form label span textarea {
 	height: 200px;
 } */
