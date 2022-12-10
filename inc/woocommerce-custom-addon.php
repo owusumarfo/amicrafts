@@ -20,7 +20,7 @@ function ami_product_add_on()
         $personalize_item_choice = isset($_POST['personalize_item_choice']) ? sanitize_text_field($_POST['personalize_item_choice']) : '';
         $personalize_item_characters = isset($_POST['personalize_item_characters']) ? sanitize_text_field($_POST['personalize_item_characters']) : '';
         echo '
-            <table class="variations" cellspacing="0" role="presentation">
+            <table class="personalize_table" cellspacing="0" role="presentation">
                 <tbody>
                     <tr>
                         <th class="label">
