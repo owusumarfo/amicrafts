@@ -485,3 +485,9 @@ input#personalize_item_characters_input {
 	right: 20%;
 	left: unset;
 }
+
+/* linehight for product options labels */
+.woocommerce div.product form.cart .variations td,
+.woocommerce div.product form.cart .variations th {
+	line-height: 1.2em;
+}
