@@ -29,8 +29,8 @@ function ami_product_add_on()
                         <td class="value">
                             <select name="personalize_item_choice" value="' . $personalize_item_choice . '" id="personalize_item_choice">
                                 <option value="no">No</option>
-                                <option value="yes_4_or_less">Yes, up to 4 characters (+₵' . number_format(get_option('personalizeditem_4_or_less_characters_price'), 2, '.', '') . ')</option>
-                                <option value="yes_5_or_more">Yes, 5 or more characters (+₵' . number_format(get_option('personalizeditem_5_or_more_characters_price'), 2, '.', '') . ')</option>
+                                <option value="yes_4_or_less">Yes, up to 4 characters (₵' . number_format(get_option('personalizeditem_4_or_less_characters_price'), 2, '.', '') . ')</option>
+                                <option value="yes_5_or_more">Yes, 5 or more characters (₵' . number_format(get_option('personalizeditem_5_or_more_characters_price'), 2, '.', '') . ')</option>
                             </select>
                         </td>
                     </tr>
@@ -44,6 +44,13 @@ function ami_product_add_on()
                     </tr>
                 </tbody>
             </table>
+
+            <br>
+
+            <div class="form-group" id="personalize_item_characters" style="display:none;">
+                <label>Enter Characters</label>
+                <input name="personalize_item_characters" value="' . $personalize_item_characters . '">
+            </div>
         ';
     }
 }
@@ -71,6 +78,7 @@ function ami_product_add_on_cart_item_data($cart_item, $product_id)
 {
     if ((isset($_POST['personalize_item_choice']) && $_POST['personalize_item_choice'] != 'no') && isset($_POST['personalize_item_characters'])) {
         $cart_item['personalize_item_characters'] = sanitize_text_field($_POST['personalize_item_characters']);
+        // $cart_item['data']->set_price($cart_item['data']->get_price() + 1);
     }
     return $cart_item;
 }
