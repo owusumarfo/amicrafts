@@ -34,16 +34,16 @@ function ami_product_add_on()
                             </select>
                         </td>
                     </tr>
-                    
+                    <tr id="personalize_item_characters" style="display:none;">
+                        <th class="label">
+                            <label id="characters_input_label" for="personalize_item_characters_input">Enter Characters</label>
+                        </th>
+                        <td class="value">
+                            <input name="personalize_item_characters" id="personalize_item_characters_input" value="' . $personalize_item_characters . '">
+                        </td>
+                    </tr>
                 </tbody>
             </table>
-
-            <br>
-
-            <div class="form-group" id="personalize_item_characters" style="display:none;">
-                <label id="characters_input_label">Enter Characters</label>
-                <input name="personalize_item_characters" value="' . $personalize_item_characters . '">
-            </div>
         ';
     }
 }
