@@ -459,3 +459,8 @@ function no_email_validation($fields)
 
 	return $fields;
 }
+
+
+
+// Woocommerce custom addon
+require get_template_directory() . '/inc/woocommerce-custom-addon.php';
