@@ -32,7 +32,8 @@
 	});
 
 	//---Add size guide on product details page
-	const sizeGuideImage = `http://${location.hostname}/wp-content/themes/amicrafts/html-v2/assets/images/product/size-guide.png`;
+	const sizeGuideImage = `https://amicrafts.com/wp-content/uploads/2022/12/Sizes-2-1536x1086.png`;
+	//`http://${location.hostname}/wp-content/themes/amicrafts/html-v2/assets/images/product/size-guide.png`;
 	const sizeGuideHtml = `<br> <a class="text-muted small" href="#" data-bs-toggle="modal" data-bs-target="#sizeGuideModal">Size Guide</a>`;
 	const sizeGuideModal = `
 	<br>
