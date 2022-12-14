@@ -31,7 +31,7 @@
 		}
 	});
 
-	//--------Add size guide on product details page
+	//---Add size guide on product details page
 	const sizeGuideImage = `http://${location.hostname}/wp-content/themes/amicrafts/html-v2/assets/images/product/size-guide.png`;
 	const sizeGuideHtml = `<br> <a class="text-muted small" href="#" data-bs-toggle="modal" data-bs-target="#sizeGuideModal">Size Guide</a>`;
 	const sizeGuideModal = `
@@ -53,7 +53,4 @@
 	`;
 
 	const sizeVariationExists = $("table.varations") > $('label:contains("Size")').append(sizeGuideHtml).append(sizeGuideModal);
-	if (sizeVariationExists) {
-		console.log("yea");
-	}
 })(jQuery);
