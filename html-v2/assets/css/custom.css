@@ -488,6 +488,7 @@ input#personalize_item_characters_input {
 
 /* linehight for product options labels */
 .woocommerce div.product form.cart .personalize_table td,
-.woocommerce div.product form.cart .personalize_table th {
+.woocommerce div.product form.cart .personalize_table th,
+.woocommerce div.product form.cart .variations th {
 	line-height: 1.2em;
 }

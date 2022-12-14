@@ -29,4 +29,25 @@
 				break;
 		}
 	});
+
+	("http://amicrafts.test/wp-content/themes/amicrafts");
+	const sizeGuideImage = `http://${location.hostname}/wp-content/themes/amicrafts/html-v2/assets/images/product/size-guide.png`;
+	const sizeGuideHtml = `<br> <a class="text-muted small" href="#" data-bs-toggle="modal" data-bs-target="#sizeGuideModal">Size Guide</a>`;
+	const sizeGuideModal = `
+	<br>
+	<div class="modal fade" id="sizeGuideModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-body">
+					<img src="${sizeGuideImage}" alt="size guide"/>
+				</div>
+			</div>
+		</div>
+	</div>
+	`;
+
+	const sizeVariationExists = $("table.varations") > $('label:contains("Size")').append(sizeGuideHtml).append(sizeGuideModal);
+	if (sizeVariationExists) {
+		console.log("yea");
+	}
 })(jQuery);
