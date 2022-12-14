@@ -492,3 +492,21 @@ input#personalize_item_characters_input {
 .woocommerce div.product form.cart .variations th {
 	line-height: 1.2em;
 }
+
+.modal-content {
+	border-radius: 0;
+}
+.modal-header .btn-close {
+	border-radius: 0;
+	padding: 0;
+	margin: 0;
+}
+
+@media (max-width: 479px) {
+	.modal-header .btn-close {
+		left: 0px;
+		width: 50px;
+		/* top: 8px; */
+		padding: 0;
+	}
+}
