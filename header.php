@@ -24,11 +24,13 @@
     <!-- Google tag (google-tag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PF4JHJ76GD"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
 
-        gtag('config', 'G-PF4JHJ76GD');
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-PF4JHJ76GD');
     </script>
 </head>
 
